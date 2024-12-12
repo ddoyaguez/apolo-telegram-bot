@@ -1,6 +1,6 @@
 # Apolo
 
-![Logo](https://github.com/ddoyaguez/apolo-telegram-bot/blob/master/apolo_logo.png?raw=true)
+![Logo](https://github.com/ddoyaguez/apolo-telegram-bot/blob/main/apolo_logo.png?raw=true)
 
 This is Apolo. A self-hostable Telegram bot to download Youtube videos to MP3 over Telegram.
 
