@@ -1,0 +1,9 @@
+*
+!.gitignore
+!config.py
+!download.py
+!handlers.py
+!main.py
+!requirements.txt
+!README.md
+!apolo_logo.png
