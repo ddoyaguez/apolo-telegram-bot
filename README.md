@@ -17,8 +17,9 @@ This is Apolo. A self-hostable Telegram bot to download Youtube videos to MP3 ov
 ## Features
 <ul>
     <li>Uses yt-dlp</li>
+    <li>Automatic yt-dlp updates via checkupdates.py script</li>
     <li>Easy configuration via toml file</li>
-    <li>~200 SLOC</li>
+    <li>~300 SLOC</li>
 </ul>
 
 ## Configuration
@@ -29,6 +30,13 @@ telegram_token = "YOUR_TELEGRAM_BOT_TOKEN"
 msg_start = "I'm Apolo, I download music from Youtube, copy me a link and I will send you the MP3"
 msg_url_list = ["Give me a second", "Let's go", "Copied, it won't take long", "On my way", "Downloading"]
 msg_finished = ["Done, here it goes"]
+msg_setadmin_ok = ["Admin chat configured"]
+msg_setadmin_na = ["Access forbidden"]
+msg_noupdates = ["No updates found"]
+msg_updateresult = ["Result"]
+msg_updateendresult = ["End of result"]
+path_chatadmin = "/opt/apolo/chatadmin"
+admin_user = "YOUR_TELEGRAM_USER_ID"
 ```
 <ul>
     <li>Apolo will randomly rotate from the msg lists, because why not</li>
@@ -64,4 +72,12 @@ WantedBy=default.target
 
 ```
 
+## Automatic updates
+You can setup a cron file that executes checkupdates.py and it will try to update yt-dlp automatically.
+It will send you a message in the chat you have used /setadmin, only if your user id is in the admin_user config.toml file line.
+
+Example crontab:
+```
+0 7 * * * /home/YOUR_NON_ROOT_USER/VENVS/apolo/bin/python /home/YOUR_NON_ROOT_USER/apolo/apolo-telegram-bot/checkupdates.py; systemctl restart apolo
+```
 
