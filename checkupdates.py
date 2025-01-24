@@ -35,13 +35,13 @@ async def update():
                 result_message += f"\n-------{config.CONFIG_DATA.get('msg_updateresult')}-------\n" + result.stderr + f"\n------{config.CONFIG_DATA.get('msg_updateendresult')}----\n"
             else:
                 result_message = "Comprobado que no hay actualizaciones"
-            chatadmin = None
-            with open(str(config.CONFIG_DATA.get('path_chatadmin'))) as f:
-                lines = f.readlines()
-                if len(lines) > 0:
-                    chatadmin = int(lines[0].strip())
-            bot = Bot(token=config.CONFIG_DATA.get('telegram_token'))
-            await bot.send_message(chat_id=chatadmin, text=result_message)
+    chatadmin = None
+    with open(str(config.CONFIG_DATA.get('path_chatadmin'))) as f:
+        lines = f.readlines()
+        if len(lines) > 0:
+            chatadmin = int(lines[0].strip())
+    bot = Bot(token=config.CONFIG_DATA.get('telegram_token'))
+    await bot.send_message(chat_id=chatadmin, text=result_message)
 
 asyncio.run(update())
         
